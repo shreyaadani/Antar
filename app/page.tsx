@@ -1,70 +1,81 @@
-// app/page.tsx
 import Link from "next/link";
 
 const STATES = [
   {
     id: "overwhelmed",
     label: "I feel overwhelmed",
+    desc: "Everything feels too much all at once.",
     href: "/grounding",
-    description: "I need help slowing down my body and breathing.",
   },
   {
     id: "numb",
-    label: "I feel numb or dissociated",
+    label: "I feel numb",
+    desc: "I don’t feel anything. I want gentle grounding.",
     href: "/grounding",
-    description: "I can’t feel much. I want gentle grounding.",
   },
   {
     id: "grieving",
     label: "I miss someone",
+    desc: "I want a quiet place to remember them.",
     href: "/memories",
-    description: "I want a quiet place to remember them.",
   },
   {
     id: "lost",
-    label: "I don’t feel like myself",
+    label: "I feel lost",
+    desc: "I don’t feel like myself lately.",
     href: "/identity",
-    description: "I want support around who I am now.",
   },
   {
-    id: "dont-know",
+    id: "unknown",
     label: "I don’t know what I need",
+    desc: "Just give me one small thing to do.",
     href: "/actions",
-    description: "Just give me one small thing to do.",
   },
 ];
 
 export default function HomePage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-12">
+      {/* Header */}
       <section className="space-y-3">
-        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
-          welcome to
+        <p className="text-xs uppercase tracking-[0.18em] text-[#8F8F99] flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-gradient-to-br from-[#C8B8FF] to-[#A8C2F5]" />
+          a soft space to land
         </p>
-        <h1 className="text-3xl font-semibold tracking-tight">
+
+        <h1 className="text-4xl font-semibold tracking-tight text-[#2B2B2F]">
           Antar
         </h1>
-        <p className="text-slate-300 max-w-xl">
-          A quiet, private space for heavy feelings, grief, and those moments
-          when you don&apos;t know what to do with yourself. You don&apos;t
-          have to have the right words to be here.
+
+        <p className="max-w-xl text-[#5B5B65] leading-relaxed text-lg">
+          A quiet place for grief, grounding, and those moments when your chest 
+          feels heavy and you don’t know what to do with yourself.
         </p>
       </section>
 
+      {/* State selector cards */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium">What feels closest to you right now?</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {STATES.map((state) => (
+        <h2 className="text-sm font-medium text-[#4A4A55]">
+          What feels closest to you right now?
+        </h2>
+
+        <div className="grid gap-5">
+          {STATES.map((s) => (
             <Link
-              key={state.id}
-              href={state.href}
-              className="group rounded-xl border border-white/10 bg-white/5 p-4 shadow-sm hover:border-white/40 hover:bg-white/10 transition"
+              key={s.id}
+              href={s.href}
+              className="group block no-underline rounded-3xl p-6 bg-white/70 backdrop-blur-lg border border-white/50 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_6px_30px_rgba(0,0,0,0.06)] hover:-translate-y-[2px] transition-all"
             >
-              <div className="font-medium mb-1 group-hover:text-white">
-                {state.label}
+              <div className="mb-2">
+                <h3 className="text-lg font-medium text-[#2B2B2F] group-hover:text-[#1F1F23] transition">
+                  {s.label}
+                </h3>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C8B8FF] to-[#A8C2F5] flex items-center justify-center text-white text-xs shadow-md">
+                  →
+                </div>
               </div>
-              <p className="text-sm text-slate-300">
-                {state.description}
+              <p className="text-sm text-[#6A6A75] leading-relaxed">
+                {s.desc}
               </p>
             </Link>
           ))}

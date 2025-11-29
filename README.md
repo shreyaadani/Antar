@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Antar
 
-## Getting Started
+_A soft space to land when grief hits and you don’t know what to do with yourself._
 
-First, run the development server:
+Antar is a minimal, free, privacy-friendly web app built to support people in acute or ongoing grief.  
+It doesn’t try to fix you, diagnose you, or track your productivity – it just offers **small, concrete ways to get through a hard moment.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+> ⚠️ Antar is **not** a crisis service and not a substitute for professional mental health care.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌱 Core ideas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+When something painful happens – losing a person, a version of yourself, a relationship, a home – a lot of us don’t know:
 
-## Learn More
+- what to **do** with our body
+- what to **do** with our thoughts
+- where to **put** the memories
+- how to handle feeling far away from people / from the event
 
-To learn more about Next.js, take a look at the following resources:
+Antar tries to help with four things:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Grounding** when you’re overwhelmed, numb, or dissociated
+2. **Tiny actions** when you don’t know what you need
+3. **Gentle remembrance** of people you’ve lost
+4. **Identity check-ins** when you don’t feel like yourself
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Everything is stored **locally in your browser** (via `localStorage`). No accounts, no database.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧭 Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 1. Home – “What feels closest to you right now?”
+
+Landing page with soft cards:
+
+- **I feel overwhelmed / numb** → Grounding
+- **I miss someone** → Memories
+- **I feel lost** → Identity
+- **I don’t know what I need** → Actions
+
+The goal is to reduce decision fatigue and let the user choose the closest match instead of overthinking.
+
+---
+
+### 2. Grounding
+
+#### Breathing (`/grounding/breathing`)
+
+A looping, visual breathing helper:
+
+- Expanding / contracting pastel circle
+- Text phases: _Breathe in → Hold → Breathe out_
+- Gentle timing (4–2–6 seconds)
+- No counters, no pressure for “perfect” breathing
+
+#### Sensory grounding (`/grounding/sensory`)
+
+A guided **5–4–3–2–1** flow:
+
+1. 5 things you can see
+2. 4 you can touch
+3. 3 you can hear
+4. 2 you can smell
+5. 1 you can taste / or simply notice your breath
+
+Each step includes:
+
+- a short explanation
+- a few concrete suggestions
+- “Back” and “Next step” navigation
+
+---
+
+### 3. Actions – “One small thing I can do” (`/actions`)
+
+For “I don’t know what I need” moments.
+
+- Shows **one low-pressure micro-action** at a time
+- Examples:
+  - take three slow sips of water
+  - open a window and look outside for 30s
+  - write one line about the person you miss
+  - send a tiny “hey, today is heavy” text to someone safe
+- Tagged by **energy level** (low / some) and **type** (body / connection / memory / self)
+- Buttons:
+  - _This feels doable_ → gentle affirmation
+  - _Show me another idea_ → random new action
+
+---
+
+### 4. Memories – “A small place to keep them close” (`/memories`)
+
+A tiny memory box for the people you miss. Uses `localStorage`.
+
+- Fields:
+  - **Who is this about?** (free text: “Dadu”, “my grandmother”, “my past self”…)
+  - **Memory** (short paragraph)
+  - **Type** (everyday moment / funny / advice / comforting / painful but important)
+- Stored only in the browser, with timestamp
+- Rendered as soft cards that can be deleted individually
+
+---
+
+### 5. Identity – “I don’t feel like myself” (`/identity`)
+
+A check-in space for when you feel disconnected from who you were.
+
+- Select a few words that fit today (e.g. _numb, tired, confused, hopeful, blank, overwhelmed, quiet_)
+- Optional short note (“I don’t recognize myself lately”, “I miss how easy things felt before”, etc.)
+- Each check-in is saved locally with time and selected words
+- History list lets you look back without framing it as “progress tracking”
+
+---
+
+### 6. Learn – Soft psychoeducation (`/learn`)
+
+Static cards with short, validating explanations about grief, e.g.:
+
+- grief doesn’t actually move in neat stages
+- numbness is still a feeling
+- being far away (different city/country) has its own kind of pain
+- mixed feelings and relief are normal
+- you don’t have to “use this time well”
+
+The tone is non-clinical and non-prescriptive.
+
+---
+
+## 🛠️ Tech stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Styling:** Tailwind CSS
+- **State:** React hooks (`useState`, `useEffect`)
+- **Storage:** `localStorage` (no backend, no auth)
+- **Design:** soft gradients,

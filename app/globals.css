@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* Optional: subtle fade-in for pages */
 main {
@@ -11,7 +9,6 @@ main {
   from {
     opacity: 0;
     transform: translateY(4px);
-    opacity: 0;
   }
   to {
     opacity: 1;
