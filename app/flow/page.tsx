@@ -1,59 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import { BreathingStep } from "../components/flow/BreathingStep";
+import { SensoryStep } from "../components/flow/SensoryStep";
+
 
 type Step = "start" | "breathing" | "sensory" | "checkin" | "closure";
 
 export default function FlowPage() {
   const [step, setStep] = useState<Step>("start");
 
-  // STEP: Breathing (placeholder for now)
-  if (step === "breathing") {
-    return (
-      <div className="space-y-6">
-        <p className="text-xs uppercase tracking-[0.18em] text-[#8F8F99]">
-          grounding · breathing
-        </p>
-        <h1 className="text-2xl font-semibold text-[#2B2B2F]">
-          Let’s slow your breath.
-        </h1>
-        <p className="text-sm text-[#5B5B65]">
-          (Breathing UI will go here in the next step.)
-        </p>
+ if (step === "breathing") {
+  return <BreathingStep onNext={() => setStep("sensory")} />;
+}
 
-        <button
-          onClick={() => setStep("sensory")}
-          className="px-5 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-[#C8B8FF] to-[#A8C2F5] text-white shadow-md"
-        >
-          Continue
-        </button>
-      </div>
-    );
-  }
-
-  // STEP: Sensory grounding (placeholder)
-  if (step === "sensory") {
-    return (
-      <div className="space-y-6">
-        <p className="text-xs uppercase tracking-[0.18em] text-[#8F8F99]">
-          grounding · sensory
-        </p>
-        <h1 className="text-2xl font-semibold text-[#2B2B2F]">
-          Let’s come back to the room a bit.
-        </h1>
-        <p className="text-sm text-[#5B5B65]">
-          (Sensory grounding UI will go here in the next step.)
-        </p>
-
-        <button
-          onClick={() => setStep("checkin")}
-          className="px-5 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-[#C8B8FF] to-[#A8C2F5] text-white shadow-md"
-        >
-          Continue
-        </button>
-      </div>
-    );
-  }
+if (step === "sensory") {
+  return <SensoryStep onNext={() => setStep("checkin")} />;
+}
 
   // STEP: Simple emotional check-in (placeholder)
   if (step === "checkin") {
